@@ -4,9 +4,10 @@ import { getMovieDetail, getMovies } from '@/api/movies';
 
 const actions: ActionTree<any, RootState> = {
   
-  async getMovies ({ commit }) {
+  async getMovies ({ commit }, payload: { page: number, limit: number, filter: object, sort: string, name: string }) {
     try {
-      const response = await getMovies();
+      const { page, limit, filter, sort, name } = payload;
+      const response = await getMovies(page, limit, filter, sort, name);
       commit('SET_MOVIES', response);
       console.log(response);
     } catch (error) {

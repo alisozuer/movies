@@ -1,37 +1,19 @@
 <template>
   <div>
     <b-container fluid>
-      <b-row class="mt-4">
-        <b-col xl="3" lg="6">
-          <b-input-group>
-        <b-form-input v-model="searchQuery" @input="debouncedSearchCharacters" placeholder="Karakter Ara"></b-form-input>
-      </b-input-group>
-        </b-col>
-        <b-col xl="3" lg="6">
-          <b-form-select v-model="selectedLimit" @change="updateLimit" :options="limitOptions" />
-        </b-col>
-        <b-col xl="3" lg="6">
-          <b-form-select v-model="selectedSort" @change="updateSort" :options="sortOptions" />
-        </b-col>
-        <b-col xl="3" lg="6">
-          <b-pagination
-        v-model="currentPage"
-        :total-rows="totalCount"
-        :per-page="perPage"
-        align="fill"
-        @input="fetchData"
-      ></b-pagination>
-        </b-col>
-      </b-row>      
-      <b-row class="my-4">
-        <b-col class="mb-2" xl="4" v-for="character in characters" :key="character.id">
-          <nuxt-link :to="`/characters/${character._id}`">
-            <b-card>
-              {{ character.name }}
-            </b-card>
-          </nuxt-link>
-        </b-col>
-      </b-row>
+      <filter-bar
+        :search-query="searchQuery"
+        :selected-limit="selectedLimit"
+        :limit-options="limitOptions"
+        :selected-sort="selectedSort"
+        :perPage="perPage"
+        :totalCount="totalCount"
+        @search="searchCharacters"
+        @limit-change="updateLimit"
+        @sort-change="updateSort"
+        @pagination="handlePagination"
+      />
+      <character-list />
     </b-container>
   </div>
 </template>
@@ -39,11 +21,17 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { State, Action } from 'vuex-class';
-import { debounce } from 'lodash';
+import FilterBar from '@/components/shared/FilterBar.vue';
+import CharacterList from '@/components/characterlist/CharacterList.vue';
 
-@Component
+@Component({
+  components: {
+    FilterBar,
+    CharacterList
+  }
+})
+
 export default class CharacterIndexPage extends Vue {
-  @State((state) => state.characters.characters) characters!: any;
   @State((state) => state.characters.totalCount) totalCount!: any;
   @Action('characters/getCharacters') getCharacters!: (params: any) => Promise<void>;
 
@@ -52,30 +40,26 @@ export default class CharacterIndexPage extends Vue {
   filter: any = null;
   selectedSort: string = 'name:asc';
   selectedLimit: number = 10;
-  limitOptions: number[] = [10, 25, 50, 75, 100];
-  sortOptions: { value: string; text: string }[] = [
-    { value: 'name:asc', text: 'Artan' },
-    { value: 'name:desc', text: 'Azalan' },
-  ];
   searchQuery: string = '';
-  debouncedSearchCharacters: () => void;
+  limitOptions: number[] = [10, 25, 50, 75, 100];
 
   async created() {
     await this.fetchData();
-    this.debouncedSearchCharacters = debounce(this.searchCharacters, 800);
   }
 
-  updateLimit() {
-    this.perPage = this.selectedLimit;
+  updateLimit(limit: number) {
+    this.perPage = limit;
     this.fetchData();
   }
 
-  updateSort() {
+  updateSort(sort: string) {
+    this.selectedSort = sort;
     this.fetchData();
   }
 
-  searchCharacters() {
+  searchCharacters(query: string) {
     this.currentPage = 1;
+    this.searchQuery = query;
     this.fetchData();
   }
 
@@ -88,6 +72,11 @@ export default class CharacterIndexPage extends Vue {
       sort: this.selectedSort,
     };
     await this.getCharacters(params);
+  }
+
+  handlePagination(page: number) {
+    this.currentPage = page;
+    this.fetchData();
   }
 }
 </script>
