@@ -4,10 +4,7 @@
       <b-row class="mt-4">
         <b-col xl="3" lg="6">
           <b-input-group>
-        <b-form-input v-model="searchQuery" placeholder="Karakter Ara"></b-form-input>
-        <b-input-group-append>
-          <b-button @click="searchCharacters" variant="primary">Ara</b-button>
-        </b-input-group-append>
+        <b-form-input v-model="searchQuery" @input="debouncedSearchCharacters" placeholder="Karakter Ara"></b-form-input>
       </b-input-group>
         </b-col>
         <b-col xl="3" lg="6">
@@ -21,7 +18,7 @@
         v-model="currentPage"
         :total-rows="totalCount"
         :per-page="perPage"
-        align="center"
+        align="fill"
         @input="fetchData"
       ></b-pagination>
         </b-col>
@@ -42,6 +39,7 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { State, Action } from 'vuex-class';
+import { debounce } from 'lodash';
 
 @Component
 export default class CharacterIndexPage extends Vue {
@@ -60,9 +58,11 @@ export default class CharacterIndexPage extends Vue {
     { value: 'name:desc', text: 'Azalan' },
   ];
   searchQuery: string = '';
+  debouncedSearchCharacters: () => void;
 
   async created() {
     await this.fetchData();
+    this.debouncedSearchCharacters = debounce(this.searchCharacters, 800);
   }
 
   updateLimit() {
@@ -84,7 +84,7 @@ export default class CharacterIndexPage extends Vue {
       page: this.currentPage,
       limit: this.perPage,
       filter: this.filter,
-      name: this.searchQuery,
+      name: `/${this.searchQuery}/i`,
       sort: this.selectedSort,
     };
     await this.getCharacters(params);
