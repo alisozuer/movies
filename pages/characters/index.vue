@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { State, Action } from 'vuex-class';
-import FilterBar from '@/components/shared/FilterBar.vue';
+import FilterBar from '@/components/shared/filterbar/FilterBar.vue';
 import CharacterList from '@/components/characterlist/CharacterList.vue';
 
 @Component({

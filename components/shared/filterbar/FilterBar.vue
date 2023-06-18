@@ -1,27 +1,5 @@
-<template>
-    <b-row class="mt-4">
-      <b-col xl="3" lg="6">
-        <b-input-group>
-          <b-form-input v-model="internalSearchQuery" @input="debouncedSearchCharacters" placeholder="Karakter Ara"></b-form-input>
-        </b-input-group>
-      </b-col>
-      <b-col xl="3" lg="6">
-        <b-form-select v-model="internalSelectedLimit" @change="updateLimit" :options="limitOptions" />
-      </b-col>
-      <b-col xl="3" lg="6">
-        <b-form-select v-model="internalSelectedSort" @change="updateSort" :options="sortOptions" />
-      </b-col>
-      <b-col xl="3" lg="6">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="totalCount"
-          :per-page="perPage"
-          align="fill"
-          @input="handlePagination"
-        ></b-pagination>
-      </b-col>
-    </b-row>
-  </template>
+<template src="./FilterBar.html"></template>
+<style lang="scss" src="./FilterBar.scss" scoped></style>
   
   <script lang="ts">
   import { Component, Vue, Prop } from 'nuxt-property-decorator';
@@ -41,7 +19,7 @@
       { value: 'name:desc', text: 'Azalan' },
     ];
     currentPage: number = 1;
-    debouncedSearchCharacters: () => void;
+    debouncedSearchCharacters!: Function;
     internalSelectedLimit: number = 10;
     internalSelectedSort: string = '';
     internalSearchQuery: string = '';
@@ -50,7 +28,7 @@
       this.internalSelectedLimit = this.selectedLimit;
       this.internalSelectedSort = this.selectedSort;
       this.internalSearchQuery = this.searchQuery;
-      this.debouncedSearchCharacters = debounce(this.searchCharacters, 800);
+      this.debouncedSearchCharacters = debounce(this.searchCharacters, 500);
     }
   
     updateLimit() {

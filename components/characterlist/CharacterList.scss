@@ -1,0 +1,32 @@
+.character-card{
+    box-shadow: rgba(57, 55, 55, 0.2) 0px 2px 8px 0px;
+    background-color: rgb(31, 29, 29);
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    .box-character{
+        width: 100%;
+        height: 300px;
+        background-image: url("~@/assets/character.jpg");
+        background-size: cover;
+        background-position: top;
+        position: relative;
+        .character-title{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 75%;
+            text-align: center;
+            background-color: white;
+            color: black;
+            padding: 15px;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+        }
+    }
+}

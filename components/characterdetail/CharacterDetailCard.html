@@ -1,0 +1,8 @@
+<div class="card p-5 m-5">
+    <template v-if="loading">
+        <h1>Yükleniyor...</h1>
+    </template>
+    <template v-else>
+        <h1 v-if="characterDetail">{{ characterDetail.name }}</h1>
+    </template>
+ </div>
