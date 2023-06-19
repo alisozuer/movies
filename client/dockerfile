@@ -15,6 +15,9 @@ RUN npm install
 # Kaynak dosyalarını kopyalama
 COPY . .
 
+# Projenin derlenmesi
+RUN npm run build
+
 EXPOSE 3000
 
 CMD ["npm","run", "start"]
