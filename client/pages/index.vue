@@ -5,7 +5,7 @@
         <nuxt-link to="/movies" class="card card--movie" aria-label="Filmler Sayfasına Git">
           <div class="card__content">
             <div class="card__overlay"></div>
-            <img src="@/assets/movies.jpg" alt="Filmler" class="card__image">
+            <img src="@/assets/img/movies.jpg" alt="Filmler" class="card__image">
             <h3 class="card__title">Filmler</h3>
           </div>
         </nuxt-link>
@@ -14,7 +14,7 @@
         <nuxt-link to="/characters" class="card card--character" aria-label="Karakterler Sayfasına Git">
           <div class="card__content">
             <div class="card__overlay"></div>
-            <img src="@/assets/characters.jpg" alt="Karakterler" class="card__image">
+            <img src="@/assets/img/characters.jpg" alt="Karakterler" class="card__image">
             <h3 class="card__title">Karakterler</h3>
           </div>
         </nuxt-link>
@@ -23,7 +23,7 @@
         <nuxt-link to="/books" class="card card--book" aria-label="Kitaplar Sayfasına Git">
           <div class="card__content">
             <div class="card__overlay"></div>
-            <img src="@/assets/books.jpg" alt="Kitaplar" class="card__image">
+            <img src="@/assets/img/books.jpg" alt="Kitaplar" class="card__image">
             <h3 class="card__title">Kitaplar</h3>
           </div>
         </nuxt-link>
