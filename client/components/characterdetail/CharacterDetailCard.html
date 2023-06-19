@@ -14,7 +14,7 @@
                 <h3 class="character-card-detail__title" itemprop="name">{{ characterDetail.name }}</h3>
                 <ul class="character-card-detail__info-list">
                   <li itemprop="description">Ras: {{ characterDetail.race }}</li>
-                  <li itemprop="description">Cinsiyet: {{ characterDetail.gender }}</li>
+                  <li itemprop="description">Cinsiyet: {{ characterDetail.gender === 'female' ? 'Kadın' : 'Erkek' }}</li>
                   <li itemprop="description">Doğum: {{ characterDetail.birth }}</li>
                   <li itemprop="description">Eş: {{ characterDetail.spouse }}</li>
                   <li itemprop="description">Ölüm: {{ characterDetail.death }}</li>
