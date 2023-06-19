@@ -19,3 +19,10 @@
     }
     
 }
+@media (max-width: 768px) {
+    .movie-card-detail{
+        &__image{
+            height: 250px;
+        }
+    }
+  }

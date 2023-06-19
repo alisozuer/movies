@@ -17,6 +17,13 @@
         justify-content: center;
         height: 100%;
         padding: 20px;
-    }
-    
+    }   
 }
+
+@media (max-width: 768px) {
+    .book-card-detail{
+        &__image{
+            height: 250px;
+        }
+    }
+  }

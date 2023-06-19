@@ -1,4 +1,4 @@
-<div class="m-5">
+<div class="container-fluid my-lg-5 my-4">
   <div class="movie-card-detail__box-container card">
     <b-row  class="movie-card-detail__row">
       <b-col lg="6">
@@ -7,7 +7,7 @@
       <b-col lg="6">
         <div class="movie-card-detail__box">
         <template v-if="loading">
-          <h1>Yükleniyor...</h1>
+          <h3>Yükleniyor...</h3>
         </template>
         <template v-else>
           <template v-if="movie && movie._id">

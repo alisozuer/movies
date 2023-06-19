@@ -23,3 +23,11 @@
     }
     
 }
+
+@media (max-width: 768px) {
+    .character-card-detail{
+        &__image{
+            height: 250px;
+        }
+    }
+  }
