@@ -1,0 +1,20 @@
+# Base image
+FROM node:16
+
+ENV NUXT_HOST=0.0.0.0
+
+# Çalışma dizini oluşturma
+WORKDIR /app
+
+# Paket bağımlılıklarını kopyalama
+COPY package*.json ./
+
+# Paketleri yükleme
+RUN npm install
+
+# Kaynak dosyalarını kopyalama
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm","run", "start"]
