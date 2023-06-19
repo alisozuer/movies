@@ -1,6 +1,14 @@
-## Getting Started
+### Kurulum
 
-To start the project, run the following command:
+1. Bu projeyi GitHub'dan indirin veya klonlayın.
 
-```bash
-docker-compose up
+2. Terminali açın ve projenin kök dizinine gidin.
+
+3. Aşağıdaki komutu kullanarak projeyi derleyin:
+
+   ```bash
+   docker-compose build
+   
+   Derleme işlemi tamamlandıktan sonra aşağıdaki komutu kullanarak projeyi başlatın:
+ 
+   docker-compose up
