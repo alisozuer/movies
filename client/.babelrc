@@ -1,16 +1,22 @@
 {
-  "env": {
-    "test": {
-      "presets": [
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "node": "current"
-            }
-          }
-        ]
-      ]
-    }
-  }
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "transform-imports",
+      {
+        "bootstrap-vue": {
+          "transform": "bootstrap-vue/es/*.{js,jsx}"
+        }
+      }
+    ]
+  ]
 }
