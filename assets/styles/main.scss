@@ -1,3 +1,48 @@
-body{
-    background-color: #292929;
-}
+:root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --pagination-bg-color: #121212;
+    --pagination-disabled-color: gray;
+  }
+  
+  body {
+    background-color: var(--background-color);
+  }
+  
+  input,
+  select {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border-color: #818181 !important;
+  }
+  
+  .b-pagination{
+    .page-item.active .page-link{
+        background-color: #818181;
+        box-shadow: none;
+        &:focus{
+            box-shadow: none !important;
+        }
+    }
+    .page-link{
+        color: #dadada;
+        &:hover{
+            background-color: var(--pagination-bg-color);
+            color: #ffffff;
+            box-shadow: none !important;
+        }
+    }
+    button {
+        background-color: var(--pagination-bg-color);
+        color: var(--text-color);
+        border-color: #818181 !important;
+    
+      }
+  }
+  
+  .b-pagination .page-item.disabled .page-link {
+    background-color: var(--pagination-bg-color);
+    color: var(--pagination-disabled-color);
+    border-color: #818181 !important;
+  }
+  

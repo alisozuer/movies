@@ -1,0 +1,13 @@
+<div class="card p-5 m-5">
+    <template v-if="loading">
+      <h1>Yükleniyor...</h1>
+    </template>
+    <template v-else>
+      <template v-if="movie && movie._id">
+        <h1>{{ movie.name }}</h1>
+      </template>
+      <template v-else>
+        <h1>Film Bulunamadı</h1>
+      </template>
+    </template>
+  </div>

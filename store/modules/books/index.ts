@@ -5,7 +5,7 @@ import mutations from './mutations';
 import getters from './getters';
 import state from './state';
 
-const characterModule: Module<any, RootState> = {
+const bookModule: Module<any, RootState> = {
   namespaced: true,
   state,
   actions,
@@ -13,4 +13,4 @@ const characterModule: Module<any, RootState> = {
   getters
 };
 
-export default characterModule;
+export default bookModule;
