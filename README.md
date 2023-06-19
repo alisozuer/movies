@@ -10,6 +10,5 @@
    docker-compose build
    
    Derleme işlemi tamamlandıktan sonra aşağıdaki komutu kullanarak projeyi başlatın:
-   
-   ```bash
+ 
    docker-compose up
