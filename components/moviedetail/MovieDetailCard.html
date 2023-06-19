@@ -1,13 +1,32 @@
-<div class="card p-5 m-5">
-    <template v-if="loading">
-      <h1>Yükleniyor...</h1>
-    </template>
-    <template v-else>
-      <template v-if="movie && movie._id">
-        <h1>{{ movie.name }}</h1>
-      </template>
-      <template v-else>
-        <h1>Film Bulunamadı</h1>
-      </template>
-    </template>
+<div class="m-5">
+  <div class="movie-card-detail__box-container card">
+    <b-row  class="movie-card-detail__row">
+      <b-col lg="6">
+        <img class="movie-card-detail__image" src="@/assets/movie.jpg"/>
+      </b-col>
+      <b-col lg="6">
+        <div class="movie-card-detail__box">
+        <template v-if="loading">
+          <h1>Yükleniyor...</h1>
+        </template>
+        <template v-else>
+          <template v-if="movie && movie._id">
+              <h3 class="movie-card-detail__title">{{ movie.name }}</h3>
+              <ul class="movie-card-detail__info-list">
+                <li>Süre: {{ movie.runtimeInMinutes }} dakika</li>
+                <li>Bütçe: {{ movie.budgetInMillions }} milyon</li>
+                <li>Gişe Geliri: {{ movie.boxOfficeRevenueInMillions }} milyon</li>
+                <li>Akademi Ödülü Adaylıkları: {{ movie.academyAwardNominations }}</li>
+                <li>Akademi Ödülü Kazanmaları: {{ movie.academyAwardWins }}</li>
+                <li>Rotten Tomatoes Puanı: {{ movie.rottenTomatoesScore }}</li>
+              </ul>
+          </template>
+          <template v-else>
+            <h1>Film Bulunamadı</h1>
+          </template>
+        </template>
+        </div>
+      </b-col>
+    </b-row>
   </div>
+</div>

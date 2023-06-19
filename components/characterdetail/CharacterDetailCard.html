@@ -1,8 +1,33 @@
-<div class="card p-5 m-5">
-    <template v-if="loading">
-        <h1>Yükleniyor...</h1>
-    </template>
-    <template v-else>
-        <h1 v-if="characterDetail">{{ characterDetail.name }}</h1>
-    </template>
- </div>
+<div class="m-5">
+    <div class="character-card-detail__box-container card">
+      <b-row class="character-card-detail__row">
+        <b-col lg="6">
+          <img class="character-card-detail__image" src="@/assets/character.jpg" />
+        </b-col>
+        <b-col lg="6">
+          <div class="character-card-detail__box">
+            <template v-if="loading">
+              <h1>Yükleniyor...</h1>
+            </template>
+            <template v-else>
+              <template v-if="characterDetail && characterDetail._id">
+                <h1 class="character-card-detail__title" itemprop="name">{{ characterDetail.name }}</h1>
+                <ul class="character-card-detail__info-list">
+                  <li itemprop="description">Ras: {{ characterDetail.race }}</li>
+                  <li itemprop="description">Cinsiyet: {{ characterDetail.gender }}</li>
+                  <li itemprop="description">Doğum: {{ characterDetail.birth }}</li>
+                  <li itemprop="description">Eş: {{ characterDetail.spouse }}</li>
+                  <li itemprop="description">Ölüm: {{ characterDetail.death }}</li>
+                  <li itemprop="description">Wiki Bağlantısı: <a target="_blank" :href="characterDetail.wikiUrl" itemprop="url">{{ characterDetail.wikiUrl }}</a></li>
+                </ul>
+              </template>
+              <template v-else>
+                <h1>Karakter Bulunamadı</h1>
+              </template>
+            </template>
+          </div>
+        </b-col>
+      </b-row>
+    </div>
+  </div>
+  

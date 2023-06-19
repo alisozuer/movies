@@ -6,8 +6,8 @@
   import { State, Action } from 'vuex-class';
   
   @Component
-  export default class MovieDetail extends Vue {
-    @State((state: any) => state.books.bookDetail) movie!: any;
+  export default class BookDetailCard extends Vue {
+    @State((state: any) => state.books.bookDetail) bookDetail!: any;
     @Action('books/getBookDetail') getBookDetail!: (id: string) => Promise<void>;
   
     loading: boolean = false;

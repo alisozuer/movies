@@ -1,0 +1,22 @@
+.book-card-detail{
+    &__image{
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        object-position: center;
+    }
+    &__row{
+        row-gap: 10px;
+    }
+    &__info-list{
+        padding-left: 25px;
+    }
+    &__box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        padding: 20px;
+    }
+    
+}

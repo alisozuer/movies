@@ -1,13 +1,14 @@
 <div>
-    <b-row>
-    <b-col class="mb-3" xl="3" md="4" sm="6" v-for="(item, index) in books" :key="index">
+  <b-row>
+    <b-col xl="3" md="4" sm="6" v-for="(item, index) in books" :key="index">
       <nuxt-link :to="`/books/${item._id}`">
         <div class="card p-3 book-card">
-            <div class="box-book">
-                <span class="book-title"> {{ item.name }}</span>
-            </div>
+          <div class="book-card__box">
+            <b-img-lazy class="book-card__image" :src="require(`@/assets/book.jpg`)" :alt="item.name"></b-img-lazy>
+            <span class="book-card__title">{{ item.name }}</span>
           </div>
+        </div>
       </nuxt-link>
-  </b-col>
-  </b-row>  
+    </b-col>
+  </b-row>
 </div>
