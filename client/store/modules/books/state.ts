@@ -1,6 +1,6 @@
-import { RootState } from '@/store/types';
+import { BookState } from '@/store/types';
 
-const state: RootState = {
+const state: BookState = {
   books: [],
   bookDetail: {},
   totalCount: 0,

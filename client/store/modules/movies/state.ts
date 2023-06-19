@@ -1,6 +1,6 @@
-import { RootState } from '@/store/types';
+import { MovieState  } from '@/store/types';
 
-const state: RootState = {
+const state: MovieState  = {
   movies: [],
   movieDetail: {},
   totalCount: 0,

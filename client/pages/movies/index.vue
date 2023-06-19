@@ -31,7 +31,7 @@ import MovieList from '@/components/movielist/MovieList.vue';
   }
 })
 
-export default class CharacterIndexPage extends Vue {
+export default class MoviesIndexPage extends Vue {
   @State((state) => state.movies.totalCount) totalCount!: any;
   @Action('movies/getMovies') getMovies!: (params: any) => Promise<void>;
 

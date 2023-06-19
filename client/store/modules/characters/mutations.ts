@@ -6,7 +6,6 @@ const mutations: MutationTree<any> = {
     state.totalCount = characters.data.total;
   },
   SET_CHARACTER_DETAIL(state, detail) {
-    console.log(detail);
     state.characterDetail = detail.data.docs[0];
   }
 };

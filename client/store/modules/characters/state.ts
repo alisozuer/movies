@@ -1,6 +1,6 @@
-import { RootState } from '@/store/types';
+import { CharacterState } from '@/store/types';
 
-const state: RootState = {
+const state: CharacterState = {
   characters: [],
   characterDetail: null,
   totalCount: 1,

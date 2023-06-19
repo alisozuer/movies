@@ -9,7 +9,6 @@ const actions: ActionTree<any, RootState> = {
       const { page, limit, filter, sort, name } = payload;
       const response = await getBooks(page, limit, filter, sort, name);
       commit('SET_BOOKS', response);
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -19,7 +18,6 @@ const actions: ActionTree<any, RootState> = {
     try {
       const response = await getBookDetail(payload);
       commit('SET_BOOK_DETAIL', response);
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
